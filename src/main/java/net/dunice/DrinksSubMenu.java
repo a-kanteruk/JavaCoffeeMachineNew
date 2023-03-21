@@ -13,9 +13,9 @@ public class DrinksSubMenu {
             try {
                 System.out.println("""
                         Введите необходимую опцию:\s
-                        1 - Приготовить 1 порцию выбранного напитка,
-                        2 - Приготовить 3 порции выбранного напитка,
-                        3 - Указать нужное количество порций,
+                        1 - Приготовить 1 порцию
+                        2 - Приготовить 3 порции
+                        3 - Указать количество порций
                         """);
                 userSubMenuChoice = scanner.nextInt();
                 Logs.logMessage("Ваш выбор - " + userSubMenuChoice);
@@ -34,7 +34,7 @@ public class DrinksSubMenu {
                         flag = false;
                         break;
                     default:
-                        Logs.logMessage("Выбрана неверная опция.");
+                        Logs.logMessage("Выбрана неверная опция");
                 }
             }catch (InputMismatchException exSubMenu){
                 Logs.logMessage("Неправильный ввод данных");
@@ -45,7 +45,8 @@ public class DrinksSubMenu {
     public static void recipeDrink() {
         try {
             System.out.print("Выберете напиток: ");
-            System.out.println("1 - Капучино, 2 - Эспрессо.");
+            System.out.println("1 - Капучино\n" +
+                    "2 - Эспрессо");
             recipeUserChoice = scanner.nextInt();
             switch (recipeUserChoice) {
                 case 1:
@@ -55,7 +56,7 @@ public class DrinksSubMenu {
                     System.out.println(Drinks.ESPRESSO.getRecipe());
                     break;
                 default:
-                    Logs.logMessage("Выбрана неверная опция.");
+                    Logs.logMessage("Выбрана неверная опция");
             }
         }catch(InputMismatchException exRecipe){
             Logs.logMessage("Неправильный ввод данных");

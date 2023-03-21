@@ -24,7 +24,6 @@ public class Logs {
             System.out.println(i);
         }
         System.out.println("Количество приготовленных капучино - " + countCapCappuccino + "\n"
-                            + "Количество приготовленных эспрессо - " + countCapEspresso);
-        System.out.println();
+                            + "Количество приготовленных эспрессо - " + countCapEspresso + "\n");
     }
 }

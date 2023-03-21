@@ -26,7 +26,7 @@ public class Main {
         while(true) {
             try {
                 System.out.print("Пожалуйста установите уровень воды. ");
-                System.out.println("Допустимый уровень воды от 200 до 5000 (мл)");
+                System.out.println("Допустимый уровень от 200 до 5000 (мл)");
                 int userSetWater = scanner.nextInt();
                 Resourses.setWater(userSetWater);
                 if (userSetWater >= Check.waterMin && userSetWater <= Check.waterMax) {
@@ -40,10 +40,11 @@ public class Main {
                 scanner.nextLine();
             }
         }
+
         while(true) {
             try {
                 System.out.print("Пожалуйста установите уровень кофе. ");
-                System.out.println("Допустимый уровень кофе от 50 до 1000 (мл)");
+                System.out.println("Допустимый уровень от 50 до 1000 (мл)");
                 int userSetCoffee = scanner.nextInt();
                 Resourses.setCoffee(userSetCoffee);
                 if (userSetCoffee >= Check.coffeeMin && userSetCoffee <= Check.coffeeMax) {
@@ -57,10 +58,11 @@ public class Main {
                 scanner.nextLine();
             }
         }
+
         while(true){
             try {
                 System.out.print("Пожалуйста установите уровень молока. ");
-                System.out.println("Допустимый уровень молока от 50 до 1000 (мл)");
+                System.out.println("Допустимый уровень от 50 до 1000 (мл)");
                 int userSetMilk = scanner.nextInt();
                 Resourses.setMilk(userSetMilk);
                 if (userSetMilk >= Check.milkMin && userSetMilk <= Check.milkMax) {

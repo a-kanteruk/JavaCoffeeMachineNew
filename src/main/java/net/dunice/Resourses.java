@@ -83,13 +83,13 @@ public class Resourses {
                             + "\tколичество капучино " + item.getValue().getCapCount() + "\tколичество эспрессо "
                             + item.getValue().getEspCount());
                 }
-                System.out.println("Выберите id нужного профиля.");
+                System.out.println("Выберите id профиля.");
                 userIdChoice = scanner.nextInt();
                 if (profileMap.containsKey(userIdChoice)) {
                     userProfile = profileMap.get(userIdChoice);
                     break;
                 }else{
-                    Logs.logMessage("Данного id не существует.");
+                    Logs.logMessage("Данного id не существует");
                 }
             }
             MenuCoffeeMachine.setAmount(userProfile.getCapCount());
