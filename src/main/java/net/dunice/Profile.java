@@ -1,8 +1,7 @@
 package net.dunice;
-import java.util.Scanner;
+import static net.dunice.Main.scanner;
 
 public class Profile {
-
     private String name;
     private int capCount;
     private int espCount;
@@ -39,13 +38,12 @@ public class Profile {
     }
 
     public static void createProfile(){
-        Scanner scanner = new Scanner(System.in);
         String name;
         int cappuccinoCap;
         int espressoCap;
 
         System.out.print("Введите имя профиля: ");
-        name = scanner.nextLine();
+        name = scanner.next();
         System.out.print("Введите количество кружек 'Каппучино' профиля: ");
         cappuccinoCap = scanner.nextInt();
         System.out.print("Введите количество кружек 'Эспрессо' профиля: ");

@@ -1,42 +1,46 @@
 package net.dunice;
 
 import java.util.InputMismatchException;
-import java.util.Scanner;
+import static net.dunice.Main.scanner;
+
 public class DrinksSubMenu {
-    private static int userSubMenuChoice = 10;
+    private static int userSubMenuChoice;
     private static int recipeUserChoice;
-    static Scanner scanner = new Scanner(System.in);
+    static boolean flag;
     public static void menu() {
 
-        while (userSubMenuChoice > 3) {
+        while (flag) {
             try {
-                System.out.println("Введите необходимую опцию: ");
-                System.out.println("1 - Приготовить 1 порцию выбранного напитка,");
-                System.out.println("2 - Приготовить 3 порции выбранного напитка,");
-                System.out.println("3 - Указать нужное количество порций,");
+                System.out.println("""
+                        Введите необходимую опцию:\s
+                        1 - Приготовить 1 порцию выбранного напитка,
+                        2 - Приготовить 3 порции выбранного напитка,
+                        3 - Указать нужное количество порций,
+                        """);
                 userSubMenuChoice = scanner.nextInt();
                 Logs.logMessage("Ваш выбор - " + userSubMenuChoice);
 
                 switch (userSubMenuChoice) {
                     case 1:
-                        MenuCoffeeMachine.amount = 1;
+                        MenuCoffeeMachine.setAmount(1);
+                        flag = false;
                         break;
                     case 2:
-                        MenuCoffeeMachine.amount = 3;
+                        MenuCoffeeMachine.setAmount(3);
+                        flag = false;
                         break;
                     case 3:
                         AmountCupOfCoffee.amountCups();
+                        flag = false;
                         break;
                     default:
                         Logs.logMessage("Выбрана неверная опция.");
                 }
             }catch (InputMismatchException exSubMenu){
-                exSubMenu.getMessage();
                 Logs.logMessage("Неправильный ввод данных");
                 scanner.nextLine();
             }
         }
-        userSubMenuChoice = 10;
     }
     public static void recipeDrink() {
         try {
@@ -45,16 +49,15 @@ public class DrinksSubMenu {
             recipeUserChoice = scanner.nextInt();
             switch (recipeUserChoice) {
                 case 1:
-                    System.out.println(MenuCoffeeMachine.cappuccino.getRecipe());
+                    System.out.println(Drinks.CAPPUCCINO.getRecipe());
                     break;
                 case 2:
-                    System.out.println(MenuCoffeeMachine.espresso.getRecipe());
+                    System.out.println(Drinks.ESPRESSO.getRecipe());
                     break;
                 default:
                     Logs.logMessage("Выбрана неверная опция.");
             }
         }catch(InputMismatchException exRecipe){
-            exRecipe.getMessage();
             Logs.logMessage("Неправильный ввод данных");
             scanner.nextLine();
         }

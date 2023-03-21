@@ -3,7 +3,7 @@ package net.dunice;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Map;
-import java.util.Scanner;
+import static net.dunice.Main.scanner;
 
 public class Resourses {
     static private boolean turnOn = false;
@@ -73,10 +73,8 @@ public class Resourses {
     }
 
     public static void mapProfile(){
-        Scanner scanner = new Scanner(System.in);
         int userIdChoice;
-        int amountCappuccino;
-        int amountEspresso;
+        Profile userProfile;
 
         try {
             while (true) {
@@ -88,38 +86,20 @@ public class Resourses {
                 System.out.println("Выберите id нужного профиля.");
                 userIdChoice = scanner.nextInt();
                 if (profileMap.containsKey(userIdChoice)) {
-                    Profile userProfile = profileMap.get(userIdChoice);
-                    amountCappuccino = userProfile.getCapCount();
-                    amountEspresso = userProfile.getEspCount();
+                    userProfile = profileMap.get(userIdChoice);
                     break;
                 }else{
                     Logs.logMessage("Данного id не существует.");
                 }
             }
-            for (int i = 1; i <= amountCappuccino; i++) {
-                if (Check.checkAll()) {
-                    Resourses.setNewLevel(MenuCoffeeMachine.cappuccino);
-                    Logs.logMessage("Ваш капучино готов.");
-                } else {
-                    Logs.logMessage("Порция капучино не была приготовлена");
-                    break;
-                }
-            }
-            for (int i = 1; i <= amountEspresso; i++) {
-                if (Check.checkAll()) {
-                    Resourses.setNewLevel(MenuCoffeeMachine.espresso);
-                    Logs.logMessage("Ваш эспрессо готов.");
-                } else {
-                    Logs.logMessage("Порция эспрессо не была приготовлена");
-                    break;
-                }
-            }
+            MenuCoffeeMachine.setAmount(userProfile.getCapCount());
+            Drinks.createDrink(Drinks.CAPPUCCINO);
+            MenuCoffeeMachine.setAmount(userProfile.getEspCount());
+            Drinks.createDrink(Drinks.ESPRESSO);
+
         }catch(InputMismatchException exExpressProfile){
-            exExpressProfile.getMessage();
             Logs.logMessage("Неправильный ввод данных");
             scanner.nextLine();
         }
     }
 }
-
-
